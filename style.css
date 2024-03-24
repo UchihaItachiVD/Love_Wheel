@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-family: 'Allura', cursive; /* Changed font family to Allura */
+  background-color: rgb(250, 220, 200); /* Light peach background */
+  background-image: linear-gradient(to right, rgb(173, 85, 102), rgb(52, 218, 118)); /* Gradient from pink to green */
+  color: rgb(40, 40, 40); /* Dark gray text color */
+  transition: background-color 500ms ease;
+}
+
+header {
+  position: absolute;
+  z-index: 999;
+  text-align: center;
+  top: 0rem;
+  text-decoration: none; /* Underline for header text */
+  padding: 1rem;
+  background: inherit;
+  color: rgb(80, 80, 80); /* Dark gray text color for header */
+}
+
+.container {
+  position: relative;
+ 
+  width: min(400px, 100%);
+  
+}
+
+ul {
+  list-style: none;
+  width: 100%;
+  height: 50%;
+  position: relative;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+ul > li {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 1.2rem);
+  --rotateX: calc(
+    1deg * var(--rotateDegrees) * calc(var(--day_idx) - var(--currentDay))
+  );
+  transform: rotateX(var(--rotateX)) translateZ(190px) translateX(-50%)
+    scale(var(--scale, 1));
+  --hue: calc(var(--rotateDegrees) * var(--day_idx));
+  background-color: hsl(var(--hue), 80%, 70%); /* Bright and saturated background color */
+  width: 70%;
+  color: rgb(240, 240, 240); /* Light gray text color */
+  display: grid;
+  grid-template-columns: 2.5rem auto;
+  height: 2.4rem;
+  transition: transform 500ms ease, background-color 500ms ease;
+}
+
+ul > li.active {
+  --lightness: 50%; /* Darker for active items */
+  --scale: 1.1;
+}
+
+ul > li > * {
+  display: grid;
+  align-items: center;
+}
+
+li > time {
+  text-align: center;
+  color: rgb(160, 160, 160); /* Medium gray text color for time */
+}
+
+li > span {
+  padding-inline-start: 0.5rem;
+  color: rgb(60, 60, 60); /* Dark gray text color */
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.controls button {
+  width: 1.5rem;
+  aspect-ratio: 1;
+  font-size: 0.9rem;
+  color: rgb(240, 240, 240); /* Light gray text color for button */
+  border: none;
+  background: rgb(120, 80, 140); /* Purple button background */
+  display: flex;
+  place-items: center;
+}
+
+.controls button:hover,
+.controls button:focus {
+  background: rgb(100, 60, 120); /* Darker purple button background on hover/focus */
+}
+
+.controls button:active {
+  transform: scale(0.9);
+}
+
+.border {
+  width: 96%;
+  height: 3em;
+  border: 1px solid rgb(140, 140, 160); /* Medium gray border */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
