@@ -57,8 +57,9 @@ ul > li {
   width: 70%;
   color: rgb(240, 240, 240); /* Light gray text color */
   display: grid;
-  grid-template-columns: 2.5rem auto;
+  grid-template-columns: 1rem auto;
   height: 2.4rem;
+  font-size: 12px;
   transition: transform 500ms ease, background-color 500ms ease;
 }
 
